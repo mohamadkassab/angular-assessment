@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private stateService: StateService,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: Object  // Inject the platform ID
+    @Inject(PLATFORM_ID) private platformId: Object  
   ) {}
 
   ngOnInit() {
