@@ -1,4 +1,4 @@
-import { Component, ViewChild, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+import { Component} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -28,5 +28,9 @@ export class ToolbarBasic {
     } else if (option === 'MyStore') {
       this.currentComponent = MyStoreComponent; 
     }
+  }
+
+  signOut() {
+    
   }
 }

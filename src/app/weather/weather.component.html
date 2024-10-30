@@ -1,1 +1,6 @@
-<p>weather works!</p>
+<div class="weather-container">
+  <h1>Weather Information</h1>
+  <div class="weather-row">
+    <app-weather-card *ngFor="let weather of weatherData" [weather]="weather"></app-weather-card>
+  </div>
+</div>

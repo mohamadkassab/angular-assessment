@@ -1,0 +1,47 @@
+.weather-card {
+  background: #ffffff; 
+  border-radius: 12px; 
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15); 
+  padding: 20px;
+  margin: 10px;
+  max-width: 400px;
+  width: 100%;
+  flex: 1 1 300px;
+  transition: transform 0.2s;
+  min-width: 350px;
+}
+
+.weather-card:hover {
+  transform: translateY(-3px); 
+}
+
+.weather-city-name {
+  color: #4a148c;
+  font-size: 1.4rem; 
+  margin-bottom: 15px;
+}
+
+.weather-location {
+  font-size: 0.9rem; 
+  color: #555; 
+}
+
+.weather-details {
+  margin-top: 20px; 
+}
+
+.weather-details p {
+  font-size: 1rem;
+  margin: 8px 0; 
+  line-height: 1.5; 
+  color: #333; 
+}
+
+.temp {
+  font-weight: bold; 
+  color: #e53935; 
+}
+
+.wind, .direction, .time, .day-night {
+  color: #2196f3; 
+}

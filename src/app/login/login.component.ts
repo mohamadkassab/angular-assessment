@@ -10,7 +10,7 @@ import { FormFieldComponent } from '../components/form-field/form-field.componen
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { environment } from '../../environments/environment';
-import { StateService } from '../app-state.service';
+import { StateService } from '../services/app-state.service';
 import { Router } from '@angular/router';
 import { TOKEN_NAME } from '../utils/constants';
 import { jwtDecode } from 'jwt-decode';
