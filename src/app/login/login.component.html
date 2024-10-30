@@ -1,0 +1,27 @@
+<div class="login-container">
+  <mat-card class="login-card" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+    <mat-card-header color="primary">
+      <mat-card-title  class="login-title mat-primary">Welcome Back</mat-card-title>
+      <mat-card-subtitle class="login-subtitle"></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <app-form-field
+          label="Email"
+          [control]="emailControl"
+          [required]="true"
+          type="email">
+        </app-form-field>
+        
+        <app-form-field
+          label="Password"
+          [control]="passwordControl"
+          [required]="true"
+          type="password">
+        </app-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
