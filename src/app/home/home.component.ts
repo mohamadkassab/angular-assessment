@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { TOKEN_NAME } from '../utils/constants';
 import { jwtDecode } from 'jwt-decode';
 import { isPlatformBrowser } from '@angular/common';
-import { ToolbarBasic } from "../components/toolbar/toolbar.component"; 
+import { ToolbarBasic } from '../components/toolbar/toolbar.component';
 
 @Component({
   selector: 'app-home',

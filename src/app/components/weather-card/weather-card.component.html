@@ -1,14 +1,15 @@
-<div class="weather-card">
+<div class="card">
     <h2 class="weather-city-name"><strong>{{ weather.countryName }}</strong></h2>
-    <p>Timezone: <strong>{{ weather.timezone }} ({{ weather.timezone_abbreviation }})</strong></p>
-    <p>Elevation: <strong>{{ weather.elevation }} m</strong></p>
+   
     
     <div class="weather-details">
-      <p><strong>Temperature:</strong> <span class="temp">{{ weather.current_weather.temperature }} °C</span></p>
-      <p><strong>Wind Speed:</strong> <span class="wind">{{ weather.current_weather.windspeed }} km/h</span></p>
-      <p><strong>Wind Direction:</strong> <span class="direction">{{ weather.current_weather.winddirection }}°</span></p>
-      <p><strong>Time:</strong> <span class="time">{{ weather.current_weather.time | date: 'short' }}</span></p>
-      <p><strong>Day/Night:</strong> <span class="day-night">{{ weather.current_weather.is_day ? 'Day' : 'Night' }}</span></p>
+      <p><strong>Timezone: </strong>{{ weather.timezone }} ({{ weather.timezone_abbreviation }})</p>
+      <p><strong>Elevation: </strong>{{ weather.elevation }} m</p>
+      <p><strong>Temperature: </strong> <span class="temp">{{ weather.current_weather.temperature }} °C</span></p>
+      <p><strong>Wind Speed: </strong> <span class="wind">{{ weather.current_weather.windspeed }} km/h</span></p>
+      <p><strong>Wind Direction: </strong> <span class="direction">{{ weather.current_weather.winddirection }}°</span></p>
+      <p><strong>Time: </strong> <span class="time">{{ weather.current_weather.time | date: 'short' }}</span></p>
+      <p><strong>Day/Night: </strong> <span class="day-night">{{ weather.current_weather.is_day ? 'Day' : 'Night' }}</span></p>
     </div>
   </div>
   

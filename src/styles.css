@@ -1,6 +1,69 @@
 /* You can add global styles to this file, and also import other style files */
 /* CSS Reset and Box Sizing */
 
+:root {
+  /* Color Palette */
+  --md-primary-color: #6200ea; /* Primary color: Deep Purple */
+  --md-primary-color-variant: #3700b3; /* Darker variant for primary */
+  
+  --md-secondary-color: #03dac6; /* Secondary color: Teal */
+  --md-secondary-color-variant: #018786; /* Darker secondary variant */
+
+  --md-tertiary-color: #ff6f00; /* Tertiary color: Deep Amber for accent */
+  --md-tertiary-color-variant: #c43e00; /* Darker variant for tertiary */
+
+  --md-background-color: #ffffff; /* Background */
+  --md-surface-color: #ffffff; /* Surfaces, such as cards */
+  --md-error-color: #b00020; /* Error accent */
+  --md-on-primary: #ffffff; /* Text/icons on primary surfaces */
+  --md-on-secondary: #000000; /* Text/icons on secondary */
+  --md-on-tertiary: #ffffff; /* Text/icons on tertiary */
+  --md-on-background: #000000; /* Text color on background */
+  --md-on-surface: #333333; /* Text color on surfaces */
+  --md-on-error: #ffffff; /* Text color on error surfaces */
+
+  /* Typography */
+  --md-font-family-primary: "Roboto", "Helvetica Neue", sans-serif;
+  --md-font-size-headline1: 6rem; /* Display */
+  --md-font-size-headline2: 3.75rem;
+  --md-font-size-headline3: 3rem;
+  --md-font-size-headline4: 2.125rem;
+  --md-font-size-headline5: 1.5rem;
+  --md-font-size-headline6: 1.25rem;
+  --md-font-size-subtitle1: 1rem;
+  --md-font-size-subtitle2: 0.875rem;
+  --md-font-size-body1: 1rem;
+  --md-font-size-body2: 0.875rem;
+  --md-font-weight-regular: 400;
+  --md-font-weight-medium: 500;
+  --md-font-weight-bold: 700;
+  --md-line-height: 1.5;
+
+  /* Elevation (Shadows) */
+  --md-shadow-0: none;
+  --md-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --md-shadow-2: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  --md-shadow-3: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  --md-shadow-4: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+
+  /* Spacing */
+  --md-spacing-xs: 4px;
+  --md-spacing-sm: 8px;
+  --md-spacing-md: 16px;
+  --md-spacing-lg: 24px;
+  --md-spacing-xl: 32px;
+
+  /* Border Radius */
+  --md-border-radius-small: 4px;
+  --md-border-radius-medium: 8px;
+  --md-border-radius-large: 20px;
+
+  /* Transitions */
+  --md-transition-fast: 0.2s cubic-bezier(0.4, 0, 1, 1);
+  --md-transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --md-transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 *,
 *::before,
 *::after {
@@ -65,4 +128,37 @@ body {
 .max-h{
   height: 100%;
   width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.container-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.card{
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  width: 400px;
+  flex: 1 1 300px;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
