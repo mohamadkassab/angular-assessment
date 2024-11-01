@@ -6,8 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormFieldComponent } from '../components/form-field/form-field.component';
-
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { AuthService } from '../services/auth/auth.service';
+import { getAuth, signInWithEmailAndPassword,signOut } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { environment } from '../../environments/environment';
 import { StateService } from '../services/app-state/app-state.service';
@@ -34,13 +34,12 @@ const app = initializeApp(environment.firebase);
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  private auth = getAuth(app);
   loginForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private stateService: StateService,
     private router: Router,
+    private authService: AuthService,
     @Inject(PLATFORM_ID) private platformId: Object  
   ) {}
 
@@ -78,28 +77,16 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password') as FormControl;
   }
 
-  onSubmit() {
-    try {
-      if (this.loginForm.valid) {
-        const email = this.loginForm.value.email; 
-        const password = this.loginForm.value.password;
-        signInWithEmailAndPassword(this.auth, email, password)
-          .then(async (userCredential) => {
-            const user = userCredential.user;
-            if (user.email) {
-              this.stateService.updateEmail(user.email);
-              this.stateService.updateIsAuthenticated(true);
-              const token = await user.getIdToken();  
-              localStorage.setItem(TOKEN_NAME, token);
-              this.router.navigate(['/home']);
-            }
-          })
-          .catch((error) => {
-            console.error('Sign-in error:', error);
-          });
+  async onSubmit() {
+    if (this.loginForm.valid) {
+      const email = this.loginForm.value.email; 
+      const password = this.loginForm.value.password;
+
+      try {
+        await this.authService.signIn(email, password);
+      } catch (error) {
+        console.error('Error during sign-in:', error);
       }
-    } catch (e) {
-      console.log(e);
     }
   }
 

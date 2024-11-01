@@ -1,6 +1,5 @@
 import { Injectable, signal } from '@angular/core';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -8,7 +7,6 @@ export class StateService {
  
   private email = signal<string>('');
   private isAuthenticated = signal<boolean>(false);
-
 
   get email$() {
     return this.email;
@@ -25,5 +23,4 @@ export class StateService {
   updateIsAuthenticated(value: boolean) {
     this.isAuthenticated.set(value);
   }
-
 }

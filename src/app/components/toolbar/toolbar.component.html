@@ -4,11 +4,9 @@
   </button>
   <span class="toolbar-title">Angular Assessment</span>
   <span class="example-spacer"></span>
-  <button mat-icon-button (click)="signOut()" aria-label="Sign Out" class="signout-icon-button">
-    <mat-icon class="icon">logout</mat-icon> 
-  </button>
 </mat-toolbar>
 
+<!-- Mat menu with additional Sign Out option -->
 <mat-menu #menu="matMenu" class="custom-menu">
   <button mat-menu-item (click)="loadComponent('Weather')">
     <mat-icon class="menu-icon">cloud</mat-icon>
@@ -17,6 +15,10 @@
   <button mat-menu-item (click)="loadComponent('MyStore')">
     <mat-icon class="menu-icon">store</mat-icon>
     My Store
+  </button>
+  <button mat-menu-item (click)="signOut()">
+    <mat-icon class="menu-icon">logout</mat-icon>
+    Sign Out
   </button>
 </mat-menu>
 

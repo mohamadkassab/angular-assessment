@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { Product, MyStoreService } from '../services/my-store/my-store.service';
+import { MyStoreService } from '../services/my-store/my-store.service';
 import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from "../components/product-card/product-card.component";
+import { ProductModel } from '../models/product.model';
+
 @Component({
   selector: 'app-my-store',
   standalone: true,
@@ -10,7 +12,7 @@ import { ProductCardComponent } from "../components/product-card/product-card.co
   styleUrl: './my-store.component.css'
 })
 export class MyStoreComponent {
-  products: Product[] = [];
+  products: ProductModel[] = [];
 
   constructor(private myStoreService: MyStoreService) {}
 
@@ -20,11 +22,11 @@ export class MyStoreComponent {
 
   fetchProducts(): void {
     this.myStoreService.getProducts().subscribe({
-      next: (data: Product[]) => {
+      next: (data: ProductModel[]) => {
         this.products = data;
       },
-      error: (error) => {
-        console.error('Error fetching products:', error);
+      error: (eror) => {
+        console.error('Error fetching products:', eror);
       },
       complete: () => {
         console.log('Product fetching completed.');

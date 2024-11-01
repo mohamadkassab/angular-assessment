@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-export interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-}
+import { Observable, throwError, timeout, catchError } from 'rxjs';
+import { ProductModel } from '../../models/product.model';
+import { TIMEOUT_DURATION } from '../../utils/constants';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class MyStoreService {
   private baseUrl = 'https://fakestoreapi.com/products';
+
   constructor(private http: HttpClient) { }
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.baseUrl);
+  getProducts(): Observable<ProductModel[]> {
+    return this.http.get<ProductModel[]>(this.baseUrl).pipe(
+      timeout(TIMEOUT_DURATION), 
+      catchError(error => {
+        console.error('Error fetching products', error);
+        return throwError(() => new Error('Failed to fetch products; please try again later.'));
+      })
+    );
   }
-
 }
