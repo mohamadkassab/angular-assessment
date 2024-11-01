@@ -10,5 +10,14 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductCardComponent {
   @Input() product: any ;
-  
+
+  selectedProduct: any = null;
+
+  openDetails(product: any) {
+    this.selectedProduct = product;
+  }
+
+  closeModal() {
+    this.selectedProduct = null;
+  }
 }
