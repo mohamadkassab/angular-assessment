@@ -29,7 +29,7 @@ export class MyStoreComponent {
         console.error('Error fetching products:', eror);
       },
       complete: () => {
-        console.log('Product fetching completed.');
+        
       }
     });
   }

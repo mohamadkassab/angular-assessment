@@ -15,7 +15,7 @@
 }
 
 .product-title {
-    font-size: var(  --md-font-size-headline6);
+    font-size: var( --md-font-size-headline6);
     margin: var(  --md-spacing-sm) 0;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -1,5 +1,8 @@
 export const environment = {
     production: false,
+    config:{
+        port: 4000
+    },
     firebase: {
         apiKey: "AIzaSyBMRUIyjjI2Rzl-ObXSCs5n8sXb_lW65KI",
 
@@ -15,5 +18,9 @@ export const environment = {
       
         measurementId: "G-3TJFLMH7VL"
       
+    },
+    urls:{
+        fakeStoreApiUrl: 'https://fakestoreapi.com/products',
+        weatherApiUrl: 'https://api.open-meteo.com/v1/forecast'
     }
   };

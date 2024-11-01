@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { initializeApp } from 'firebase/app';
 import { StateService } from '../app-state/app-state.service';
 import { TOKEN_NAME } from '../../utils/constants';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.dev';
 import { getAuth, signInWithEmailAndPassword,signOut } from 'firebase/auth';
 import { TIMEOUT_DURATION } from '../../utils/constants';
 

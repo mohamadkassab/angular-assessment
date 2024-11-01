@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, catchError, map, timeout } from 'rxjs';
 import { TIMEOUT_DURATION } from '../../utils/constants';
+import { environment } from '../../../environments/environment.dev';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class WeatherService {
-  private baseUrl = 'https://api.open-meteo.com/v1/forecast';
+  private baseUrl = environment.urls.weatherApiUrl;
 
   constructor(private http: HttpClient) { }
 

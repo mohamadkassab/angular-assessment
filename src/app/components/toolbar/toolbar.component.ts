@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { getAuth } from 'firebase/auth';
 
 import { initializeApp } from 'firebase/app';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.dev';
 
 
 const app = initializeApp(environment.firebase);

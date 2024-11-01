@@ -9,7 +9,7 @@ import { FormFieldComponent } from '../components/form-field/form-field.componen
 import { AuthService } from '../services/auth/auth.service';
 import { getAuth, signInWithEmailAndPassword,signOut } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.dev';
 import { StateService } from '../services/app-state/app-state.service';
 import { Router } from '@angular/router';
 import { TOKEN_NAME } from '../utils/constants';
@@ -48,25 +48,6 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
-
-    if (isPlatformBrowser(this.platformId)) {
-      const token = localStorage.getItem(TOKEN_NAME);
-      if (token) {
-        try {
-
-          const decoded: any = jwtDecode(token);
-          const isExpired = decoded.exp * 1000 < Date.now(); 
-
-          if (!isExpired) {
-            this.router.navigate(['/home']);
-          } else {
-            console.log('Token is expired');
-          }
-        } catch (error) {
-          console.error('Error decoding token:', error);
-        }
-      }
-    }
   }
 
   get emailControl(): FormControl {

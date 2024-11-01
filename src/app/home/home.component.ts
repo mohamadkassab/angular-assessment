@@ -12,31 +12,7 @@ import { ToolbarBasic } from '../components/toolbar/toolbar.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-  constructor(
-    private router: Router,
-    @Inject(PLATFORM_ID) private platformId: Object 
-  ) {}
-
-  ngOnInit() {
-   
-    if (isPlatformBrowser(this.platformId)) {
-      const token = localStorage.getItem(TOKEN_NAME);
-      if (!token) {
-        this.router.navigate(['']);
-        return;
-      }
-
-      try {
-        const decoded: any = jwtDecode(token);
-        const isExpired = decoded.exp * 1000 < Date.now(); 
-        if (isExpired) {
-          this.router.navigate(['']);
-        }
-      } catch (error) {
-        this.router.navigate(['/login']);
-      }
-    }
-  }
+ 
 }
