@@ -3,33 +3,33 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  padding: 20px;
-  background: url('../../app/assets/images/image.jpg') no-repeat center center fixed;
+  padding: var(--md-spacing-lg);
+  background: url("../../app/assets/images/image.jpg") no-repeat center center
+    fixed;
   background-size: cover;
 }
 
 .login-card {
   max-width: 400px;
   width: 100%;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  background-color: rgba(255, 255, 255, 0.9);
-  transition: max-width 0.3s ease;
+  padding: var(--md-spacing-lg);
+  border-radius: var(--md-spacing-sm);
+  box-shadow: 0 4px 8px var(--md-primary-color-shadow);
+  background-color: var(--md-surface-color);
+  transition: max-width var(--md-transition-fast);
 }
 
 .login-title {
-  font-size: 24px;
+  font-size: var(--md-font-size-headline5);
   font-weight: bold;
   text-align: center;
-  color: #673AB7;
+  color: var(--md-primary-color-variant);
 }
 
 .login-subtitle {
-  font-size: 16px;
+  font-size: var(--md-font-size-headline6);
   text-align: center;
-  color: #757575;
-  margin-bottom: 20px;
+  margin-bottom: var(--md-spacing-lg);
 }
 
 .login-form {
@@ -38,8 +38,8 @@
 }
 
 button[type="submit"] {
-  margin-top: 15px;
-  font-size: 16px;
+  margin-top: var(--md-spacing-md);
+  font-size: var(--md-font-size-headline6);
 }
 
 .form-field {
@@ -49,28 +49,14 @@ button[type="submit"] {
 @media (max-width: 768px) {
   .login-card {
     max-width: 90%;
-    padding: 15px;
+    padding: var(--md-spacing-md);
   }
 
   .login-title {
-    font-size: 20px;
-  }
-
-  .login-subtitle {
-    font-size: 14px;
+    font-size: var(--md-font-size-headline5);
   }
 
   button[type="submit"] {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .login-title {
-    font-size: 18px;
-  }
-
-  .login-subtitle {
-    font-size: 12px;
+    font-size: var(--md-font-size-subtitle1);
   }
 }

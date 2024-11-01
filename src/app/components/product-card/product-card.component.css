@@ -4,7 +4,9 @@
     width: 100%;
     height: 350px;
     object-fit: contain;
-    border-radius: 5px;
+    border-radius: var(--md-border-radius-small);
+    mix-blend-mode: multiply;
+    
 }
 
 .product-info {
@@ -16,21 +18,23 @@
 }
 
 .product-title {
-    font-size: 1.2em;
-    margin: 10px 0;
+    font-size: var(  --md-font-size-headline6);
+    margin: var(  --md-spacing-sm) 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: var( --md-on-surface);
+
 }
 
 .product-price {
-    color: #4caf50;
+    color: var(  --md-primary-color-variant);
     font-weight: bold;
 }
 
 .product-description {
-    font-size: 0.9em;
-    color: #555555;
+    font-size:var(--md-font-size-subtitle2);
+    color: var( --md-on-surface);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

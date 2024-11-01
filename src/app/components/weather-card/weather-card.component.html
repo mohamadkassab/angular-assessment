@@ -9,7 +9,11 @@
       <p><strong>Wind Speed: </strong> <span class="wind">{{ weather.current_weather.windspeed }} km/h</span></p>
       <p><strong>Wind Direction: </strong> <span class="direction">{{ weather.current_weather.winddirection }}°</span></p>
       <p><strong>Time: </strong> <span class="time">{{ weather.current_weather.time | date: 'short' }}</span></p>
-      <p><strong>Day/Night: </strong> <span class="day-night">{{ weather.current_weather.is_day ? 'Day' : 'Night' }}</span></p>
-    </div>
+      <p>
+        <strong>Day/Night: </strong> 
+        <span [ngClass]="{'day': weather.current_weather.is_day, 'night': !weather.current_weather.is_day}">
+          {{ weather.current_weather.is_day ? 'Day' : 'Night' }}
+        </span>
+      </p>    </div>
   </div>
   

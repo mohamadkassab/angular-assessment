@@ -3,17 +3,18 @@
 
 :root {
   /* Color Palette */
-  --md-primary-color: #6200ea; /* Primary color: Deep Purple */
+  --md-primary-color: #6a00ff; /* Primary color: Deep Purple */
   --md-primary-color-variant: #3700b3; /* Darker variant for primary */
-  
-  --md-secondary-color: #03dac6; /* Secondary color: Teal */
-  --md-secondary-color-variant: #018786; /* Darker secondary variant */
+  --md-primary-color-shadow: rgba(98, 0, 234, 0.1);
 
-  --md-tertiary-color: #ff6f00; /* Tertiary color: Deep Amber for accent */
-  --md-tertiary-color-variant: #c43e00; /* Darker variant for tertiary */
+  --md-secondary-color: #ff6f00; /* Secondary color: Teal */
+  --md-secondary-color-variant: #b13800; /* Darker secondary variant */
+
+  --md-tertiary-color: #008cff; /* Tertiary color: Deep Amber for accent */
+  --md-tertiary-color-variant: #005eaa; /* Darker variant for tertiary */
 
   --md-background-color: #ffffff; /* Background */
-  --md-surface-color: #ffffff; /* Surfaces, such as cards */
+  --md-surface-color: #fcefff; /* Surfaces, such as cards */
   --md-error-color: #b00020; /* Error accent */
   --md-on-primary: #ffffff; /* Text/icons on primary surfaces */
   --md-on-secondary: #000000; /* Text/icons on secondary */
@@ -38,6 +39,15 @@
   --md-font-weight-medium: 500;
   --md-font-weight-bold: 700;
   --md-line-height: 1.5;
+
+  /* Font weights */
+  --md-font-weight-light: 300;
+  --md-font-weight-regular: 400;
+  --md-font-weight-medium: 500;
+  --md-font-weight-semi-bold: 600;
+  --md-font-weight-bold: 700;
+  --md-font-weight-extra-bold: 800;
+  --md-font-weight-black: 900;
 
   /* Elevation (Shadows) */
   --md-shadow-0: none;
@@ -116,15 +126,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
 .max-h{
   height: 100%;
   width: 100%;
@@ -135,28 +136,27 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: Arial, sans-serif;
-  color: #333;
-  margin-top: 1rem;
-  padding: 1rem;
+  margin-top: var(--md-spacing-sm);
+  padding: var(--md-spacing-sm);
 }
 
 .container-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: var(--md-spacing-sm);
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: var(--md-spacing-sm);
 }
 
 .card{
-  background: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 10px;
+  background: var(--md-surface-color);
+  border-radius: var(--md-border-radius-medium);
+  box-shadow: 0px 4px 8px var(--md-primary-color-shadow);
+  padding: var(--md-spacing-lg);
+  margin: var(--md-spacing-sm);
   width: 400px;
-  flex: 1 1 300px;
-  transition: transform 0.2s;
+  flex: 1 1 400px;
+  transition: var(--md-transition-fast);
 }
 
 .card:hover {

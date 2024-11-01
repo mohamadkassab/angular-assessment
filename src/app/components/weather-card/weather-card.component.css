@@ -1,32 +1,39 @@
-
-
 .weather-city-name {
-  color: var(--text-color);
-  font-size: 1.4rem; 
-  margin-bottom: 15px;
+  color: var(--md-on-surface);
+  font-size: var(--md-font-size-headline6);
+  margin-bottom: var(--md-spacing-md);
 }
 
 .weather-location {
-  font-size: 0.9rem; 
-  color: #555; 
+  font-size: var(--md-font-size-subtitle1);
+  color: var(--md-on-surface);
 }
 
 .weather-details {
-  margin-top: 20px; 
+  margin-top: var(--md-spacing-lg);
 }
 
 .weather-details p {
-  font-size: 1rem;
-  margin: 8px 0; 
-  line-height: 1.5; 
-  color: #333; 
+  font-size: var(--md-font-size-subtitle1);
+  margin: var(--md-spacing-sm) 0;
+  line-height: 1.5;
+  color: var(--md-on-surface);
 }
 
+.wind,
+.direction,
+.time,
+.day-night,
 .temp {
-  font-weight: bold; 
-  color: #e53935; 
+  font-weight: var(--md-font-weight-bold);
+  color: var(--md-tertiary-color-variant);
 }
 
-.wind, .direction, .time, .day-night {
-  color: #2196f3; 
+.day {
+  font-weight: var(--md-font-weight-bold);
+  color: var(--md-secondary-color-variant);
+}
+.night {
+  font-weight: var(--md-font-weight-bold);
+  color: var(--md-tertiary-color-variant);
 }

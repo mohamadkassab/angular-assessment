@@ -19,7 +19,7 @@ export class ToolbarBasic {
   currentComponent: any; 
 
   constructor() {
-    this.currentComponent = WeatherComponent; 
+    this.currentComponent = MyStoreComponent; 
   }
 
   loadComponent(option: string) {
