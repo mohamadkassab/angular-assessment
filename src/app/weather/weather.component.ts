@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { WeatherService } from '../services/weather/weather.service';
 import { CommonModule } from '@angular/common';
 import { WeatherCardComponent } from '../components/weather-card/weather-card.component';
+import { StateService } from '../services/app-state/app-state.service';
 
 @Component({
   selector: 'app-weather',
@@ -13,9 +14,11 @@ import { WeatherCardComponent } from '../components/weather-card/weather-card.co
 export class WeatherComponent {
   weatherData: any[] = []; 
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService, private stateService: StateService) { }
 
   ngOnInit(): void {
+    this.stateService.updateCurrentPage("Weather");
+    this.stateService.updateStatus("loading");
     const countries = [
       { lat: 50.8503, lon: 4.3517, name: "Brussels" }, // Brussels, Belgium
       { lat: 48.8566, lon: 2.3522, name: "Paris" }, // Paris, France
@@ -34,6 +37,8 @@ export class WeatherComponent {
 
     this.weatherService.getWeatherForMultipleCountries(countries).subscribe(data => {
       this.weatherData = data;
+      this.stateService.updateStatus("idle");
     });
+  
   }
 }

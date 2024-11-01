@@ -162,3 +162,7 @@ body {
 .card:hover {
   transform: scale(1.05);
 }
+
+.title{
+  color: var(--md-on-surface);
+}

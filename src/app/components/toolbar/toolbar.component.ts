@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -25,11 +25,17 @@ const app = initializeApp(environment.firebase);
   standalone: true,
   imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, CommonModule],
 })
-export class ToolbarBasic {
+export class ToolbarBasic implements OnInit {
   currentComponent: any;
+  currentPage  = "Weather";
 
-  constructor(private authService: AuthService) {
-    this.currentComponent = MyStoreComponent;
+  constructor(private authService: AuthService, private stateService: StateService) {
+    this.currentComponent = WeatherComponent;
+  }
+  ngOnInit(): void {
+    this.stateService.currentPage$.subscribe(value =>{
+      this.currentPage = value;
+    })
   }
 
   loadComponent(option: string) {

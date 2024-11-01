@@ -38,8 +38,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
     private authService: AuthService,
+    private stateService: StateService,
     @Inject(PLATFORM_ID) private platformId: Object  
   ) {}
 
@@ -59,16 +59,17 @@ export class LoginComponent implements OnInit {
   }
 
   async onSubmit() {
+    this.stateService.updateStatus("loading");
     if (this.loginForm.valid) {
       const email = this.loginForm.value.email; 
       const password = this.loginForm.value.password;
-
       try {
         await this.authService.signIn(email, password);
       } catch (error) {
         console.error('Error during sign-in:', error);
       }
     }
+    this.stateService.updateStatus("idle");
   }
 
   getErrorMessage(controlName: string): string {
