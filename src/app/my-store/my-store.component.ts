@@ -15,7 +15,7 @@ import { StateService } from '../services/app-state/app-state.service';
 export class MyStoreComponent {
   products: ProductModel[] = [];
 
-  constructor(private myStoreService: MyStoreService, private stateService: StateService,) {}
+  constructor(private myStoreService: MyStoreService, private stateService: StateService,) { }
 
   ngOnInit(): void {
     this.stateService.updateCurrentPage("My Store");

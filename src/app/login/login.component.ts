@@ -7,14 +7,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormFieldComponent } from '../components/form-field/form-field.component';
 import { AuthService } from '../services/auth/auth.service';
-import { getAuth, signInWithEmailAndPassword,signOut } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { environment } from '../../environments/environment.dev';
 import { StateService } from '../services/app-state/app-state.service';
-import { Router } from '@angular/router';
-import { TOKEN_NAME } from '../utils/constants';
-import { jwtDecode } from 'jwt-decode';
-import { isPlatformBrowser } from '@angular/common';  
+import { MatIcon } from '@angular/material/icon';
 
 const app = initializeApp(environment.firebase);
 
@@ -29,6 +25,7 @@ const app = initializeApp(environment.firebase);
     MatButtonModule,
     MatFormFieldModule,
     FormFieldComponent,
+    MatIcon
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
@@ -40,8 +37,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private stateService: StateService,
-    @Inject(PLATFORM_ID) private platformId: Object  
-  ) {}
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -58,10 +55,10 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password') as FormControl;
   }
 
-  async onSubmit() {
+  async onSubmit(event: MouseEvent) {
     this.stateService.updateStatus("loading");
     if (this.loginForm.valid) {
-      const email = this.loginForm.value.email; 
+      const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
       try {
         await this.authService.signIn(email, password);

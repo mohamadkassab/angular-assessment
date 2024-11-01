@@ -3,8 +3,12 @@
   <div class="product-info">
     <h3 class="product-title">{{ product.title }}</h3>
     <p class="product-price">Price: {{ product.price | currency }}</p>
-    <p class="product-description">{{ product.description | slice: 0: 60 }}...</p>
-    <button (click)="openDetails(product)" class="view-details-button">View Details</button>
+    <p class="product-description">
+      {{ product.description | slice : 0 : 60 }}...
+    </p>
+    <button (click)="openDetails(product)" class="view-details-button">
+      View Details
+    </button>
   </div>
 </div>
 
@@ -13,7 +17,11 @@
   <div class="modal-content" (click)="$event.stopPropagation()">
     <span class="close-button" (click)="closeModal()">&times;</span>
     <h2 class="model-title">{{ selectedProduct.title }}</h2>
-    <img [src]="selectedProduct.image" [alt]="selectedProduct.title" class="modal-image" />
+    <img
+      [src]="selectedProduct.image"
+      [alt]="selectedProduct.title"
+      class="modal-image"
+    />
     <p class="product-price">Price: {{ selectedProduct.price | currency }}</p>
     <p class="modal-description">{{ selectedProduct.description }}</p>
   </div>

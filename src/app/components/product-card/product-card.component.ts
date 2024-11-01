@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-card.component.css'
 })
 export class ProductCardComponent {
-  @Input() product: any ;
+  @Input() product: any;
 
   selectedProduct: any = null;
 

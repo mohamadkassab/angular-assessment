@@ -1,10 +1,10 @@
 .weather-city-name {
-  font-size: var( --md-font-size-headline6);
-    margin: var(  --md-spacing-sm) 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: var( --md-on-surface);
+  font-size: var(--md-font-size-headline6);
+  margin: var(--md-spacing-sm) 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--md-on-surface);
 }
 
 .weather-location {

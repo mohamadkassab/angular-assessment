@@ -4,7 +4,6 @@ import { TOKEN_NAME } from '../utils/constants';
 import { jwtDecode } from 'jwt-decode';
 import { isPlatformBrowser } from '@angular/common';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -51,7 +50,7 @@ export class MiddlewareGuard implements CanActivate {
         observer.next(false);
       }
     } else {
-      observer.next(false); 
+      observer.next(false);
     }
     observer.complete();
   }

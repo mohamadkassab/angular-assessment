@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class StateService {
- 
+
   private _status = new BehaviorSubject<string>('idle');
   status$ = this._status.asObservable();
   getStatus$() {

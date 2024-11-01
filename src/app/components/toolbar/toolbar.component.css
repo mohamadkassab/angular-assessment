@@ -3,41 +3,41 @@
 }
 
 .toolbar {
-  background-color: var(--md-primary-color); 
-  color: var(  --md-on-primary);
-  padding: 0 var(  --md-spacing-md);
+  background-color: var(--md-primary-color);
+  color: var(--md-on-primary);
+  padding: 0 var(--md-spacing-md);
 }
 
 .toolbar-title {
-  font-size: var( --md-font-size-headline6); 
-  font-weight: bold; 
-  margin-left: var(--md-spacing-sm); 
+  font-size: var(--md-font-size-headline6);
+  font-weight: bold;
+  margin-left: var(--md-spacing-sm);
 }
 
 .icon {
-  color: white; 
+  color: white;
 }
 
 .signout-icon-button {
-  margin-left: var( --md-spacing-md); 
+  margin-left: var(--md-spacing-md);
 }
 
 .custom-menu {
-  background-color: var(--md-background-color); 
-  color: var(--md-on-surface); 
+  background-color: var(--md-background-color);
+  color: var(--md-on-surface);
 }
 
 .mat-menu-item {
   display: flex;
   align-items: center;
-  padding: var( --md-spacing-md) var( --md-spacing-md);
+  padding: var(--md-spacing-md) var(--md-spacing-md);
 }
 
 .menu-icon {
-  margin-right: var( --md-spacing-sm); 
+  margin-right: var(--md-spacing-sm);
   color: var(--md-primary-color-variant);
 }
 
 .mat-menu-item:hover {
-  background-color: var(--md-surface-color); 
+  background-color: var(--md-surface-color);
 }

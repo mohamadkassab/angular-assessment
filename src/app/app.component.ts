@@ -13,24 +13,24 @@ import { OnInit } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  
-  title = 'angular-assessment';
-  isLoading : boolean = false;
-  currentPage  = "Weather";
 
-  constructor(private stateService: StateService) {}
+  title = 'angular-assessment';
+  isLoading: boolean = false;
+  currentPage = "Weather";
+
+  constructor(private stateService: StateService) { }
 
   ngOnInit(): void {
-    this.stateService.status$.subscribe(value =>{
-      if(value === "loading"){
+    this.stateService.status$.subscribe(value => {
+      if (value === "loading") {
         this.isLoading = true;
       }
-      else{
+      else {
         this.isLoading = false;
       }
     })
 
-    this.stateService.currentPage$.subscribe(value =>{
+    this.stateService.currentPage$.subscribe(value => {
       this.currentPage = value;
     })
   }

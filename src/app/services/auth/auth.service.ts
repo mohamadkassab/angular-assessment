@@ -4,7 +4,7 @@ import { initializeApp } from 'firebase/app';
 import { StateService } from '../app-state/app-state.service';
 import { TOKEN_NAME } from '../../utils/constants';
 import { environment } from '../../../environments/environment.dev';
-import { getAuth, signInWithEmailAndPassword,signOut } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { TIMEOUT_DURATION } from '../../utils/constants';
 
 const app = initializeApp(environment.firebase);
@@ -16,7 +16,7 @@ export class AuthService {
   constructor(
     private stateService: StateService,
     private router: Router
-  ) {}
+  ) { }
 
   private auth = getAuth(app);
 
@@ -44,7 +44,7 @@ export class AuthService {
       }
     } catch (e) {
       console.error('Sign-in error:', e);
-      throw e; 
+      throw e;
     }
   }
 

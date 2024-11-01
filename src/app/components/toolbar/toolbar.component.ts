@@ -8,9 +8,6 @@ import { WeatherComponent } from '../../weather/weather.component';
 import { MyStoreComponent } from '../../my-store/my-store.component';
 import { AuthService } from '../../services/auth/auth.service';
 import { StateService } from '../../services/app-state/app-state.service';
-import { Router } from '@angular/router';
-import { getAuth } from 'firebase/auth';
-
 import { initializeApp } from 'firebase/app';
 import { environment } from '../../../environments/environment.dev';
 
@@ -27,13 +24,13 @@ const app = initializeApp(environment.firebase);
 })
 export class ToolbarBasic implements OnInit {
   currentComponent: any;
-  currentPage  = "Weather";
+  currentPage = "Weather";
 
   constructor(private authService: AuthService, private stateService: StateService) {
     this.currentComponent = WeatherComponent;
   }
   ngOnInit(): void {
-    this.stateService.currentPage$.subscribe(value =>{
+    this.stateService.currentPage$.subscribe(value => {
       this.currentPage = value;
     })
   }

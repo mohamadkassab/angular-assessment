@@ -32,7 +32,6 @@ export class WeatherComponent {
       { lat: 28.6139, lon: 77.2090, name: "New Delhi" },  // New Delhi, India
       { lat: 1.3521, lon: 103.8198, name: "Singapore" },  // Singapore, Singapore
       { lat: -1.2921, lon: 36.8219, name: "Nairobi" }    // Nairobi, Kenya
-
     ];
 
     this.weatherService.getWeatherForMultipleCountries(countries).subscribe(data => {

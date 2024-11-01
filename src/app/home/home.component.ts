@@ -14,5 +14,4 @@ import { ToolbarBasic } from '../components/toolbar/toolbar.component';
 })
 export class HomeComponent {
 
- 
 }
