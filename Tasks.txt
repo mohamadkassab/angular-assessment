@@ -33,28 +33,3 @@ Testing, read documentation,
 
 
 
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ToolbarBasic } from './toolbar.component';
-
-describe('MyComponent', () => {
-  let component: ToolbarBasic;
-  let fixture: ComponentFixture<ToolbarBasic>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ ToolbarBasic ]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ToolbarBasic);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
-
