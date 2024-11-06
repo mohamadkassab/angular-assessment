@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { initializeApp } from 'firebase/app';
-import { StateService } from '../app-state/app-state.service';
-import { TOKEN_NAME } from '../../utils/constants';
+import { SignalService } from '../signal/signal.service';
+import { TOKEN_KEY } from '../../utils/constants';
 import { environment } from '../../../environments/environment.dev';
 import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { TIMEOUT_DURATION } from '../../utils/constants';
+import { StatusModel } from '../../models/status.model';
+import { SessionManagementService } from '../session/session-management.service';
 
 const app = initializeApp(environment.firebase);
 
@@ -14,8 +16,9 @@ const app = initializeApp(environment.firebase);
 })
 export class AuthService {
   constructor(
-    private stateService: StateService,
-    private router: Router
+    private signalService: SignalService,
+    private router: Router,
+    private sessionManagementService: SessionManagementService
   ) { }
 
   private auth = getAuth(app);
@@ -30,21 +33,25 @@ export class AuthService {
 
   async signIn(email: string, password: string): Promise<void> {
     try {
+      this.signalService.updateStatus$(StatusModel.LOADING);
       const signInPromise = signInWithEmailAndPassword(this.auth, email, password);
       await Promise.race([signInPromise, this.createTimeoutPromise()]);
       const userCredential = await signInPromise;
       const user = userCredential.user;
 
       if (user.email) {
-        this.stateService.updateEmail(user.email);
-        this.stateService.updateIsAuthenticated(true);
         const token = await user.getIdToken();
-        localStorage.setItem(TOKEN_NAME, token);
+        this.sessionManagementService.setSession(token);
         this.router.navigate(['/home']);
+      }else{
+        this.signalService.pushErrorMessage(`Login failed`);
       }
     } catch (e) {
-      console.error('Sign-in error:', e);
+      this.signalService.pushErrorMessage(`Login failed`);
       throw e;
+    }
+    finally{
+      this.signalService.updateStatus$(StatusModel.IDLE);
     }
   }
 
@@ -53,12 +60,10 @@ export class AuthService {
       const signOutPromise = signOut(this.auth);
       await Promise.race([signOutPromise, this.createTimeoutPromise()]);
       await signOutPromise;
-      localStorage.removeItem(TOKEN_NAME);
-      this.stateService.updateIsAuthenticated(false);
-      this.stateService.updateEmail('');
+      this.sessionManagementService.endSession();
       this.router.navigate(['/login']);
     } catch (e) {
-      console.error('Sign-out error:', e);
+      this.signalService.pushErrorMessage(`Sign-out error: ${e}`);
     }
   }
 }

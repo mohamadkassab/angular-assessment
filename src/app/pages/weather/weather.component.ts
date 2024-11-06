@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
-import { WeatherService } from '../services/weather/weather.service';
+import { Component, effect } from '@angular/core';
+import { WeatherService } from '../../services/weather/weather.service';
 import { CommonModule } from '@angular/common';
-import { WeatherCardComponent } from '../components/weather-card/weather-card.component';
-import { StateService } from '../services/app-state/app-state.service';
+import { WeatherCardComponent } from '../../components/weather-card/weather-card.component';
+import { SignalService } from '../../services/signal/signal.service';
+import { StatusModel } from '../../models/status.model';
+import { PagesModel } from '../../models/pages.model';
 
 @Component({
   selector: 'app-weather',
@@ -14,11 +16,17 @@ import { StateService } from '../services/app-state/app-state.service';
 export class WeatherComponent {
   weatherData: any[] = []; 
 
-  constructor(private weatherService: WeatherService, private stateService: StateService) { }
+  constructor(private weatherService: WeatherService, private signalService: SignalService) {
+    effect(() => {
+      const _weatherData = this.signalService._weatherData();
+      if (_weatherData.length > 0) {
+        this.weatherData = _weatherData;
+      }
+    });
+   }
 
   ngOnInit(): void {
-    this.stateService.updateCurrentPage("Weather");
-    this.stateService.updateStatus("loading");
+    this.signalService.updateCurrentPage$(PagesModel.WEATHER);
     const countries = [
       { lat: 50.8503, lon: 4.3517, name: "Brussels" }, // Brussels, Belgium
       { lat: 48.8566, lon: 2.3522, name: "Paris" }, // Paris, France
@@ -34,10 +42,6 @@ export class WeatherComponent {
       { lat: -1.2921, lon: 36.8219, name: "Nairobi" }    // Nairobi, Kenya
     ];
 
-    this.weatherService.getWeatherForMultipleCountries(countries).subscribe(data => {
-      this.weatherData = data;
-      this.stateService.updateStatus("idle");
-    });
-  
+    this.weatherService.getWeatherForMultipleCountries(countries);
   }
 }

@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, effect, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu'; // Import MatMenuModule
 import { CommonModule } from '@angular/common'; // Import CommonModule
-import { WeatherComponent } from '../../weather/weather.component';
-import { MyStoreComponent } from '../../my-store/my-store.component';
+import { WeatherComponent } from '../../pages/weather/weather.component';
+import { MyStoreComponent } from '../../pages/my-store/my-store.component';
 import { AuthService } from '../../services/auth/auth.service';
-import { StateService } from '../../services/app-state/app-state.service';
+import { SignalService } from '../../services/signal/signal.service';
 import { initializeApp } from 'firebase/app';
 import { environment } from '../../../environments/environment.dev';
-
+import { PagesModel } from '../../models/pages.model';
 
 const app = initializeApp(environment.firebase);
 
@@ -22,24 +22,30 @@ const app = initializeApp(environment.firebase);
   standalone: true,
   imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, CommonModule],
 })
-export class ToolbarBasic implements OnInit {
+export class ToolbarBasic  {
   currentComponent: any;
-  currentPage = "Weather";
+  currentPage = "";
 
-  constructor(private authService: AuthService, private stateService: StateService) {
-    this.currentComponent = WeatherComponent;
+  constructor(private authService: AuthService, private signalService: SignalService) {
+
+    effect(() => {
+      const currentPage = this.signalService._currentPage();
+      if (currentPage === PagesModel.WEATHER) {
+        this.currentComponent = WeatherComponent;
+        this.currentPage = PagesModel.WEATHER;
+      } else if (currentPage === PagesModel.MyStore) {
+        this.currentComponent = MyStoreComponent;
+        this.currentPage = PagesModel.MyStore;
+      }
+    });
   }
-  ngOnInit(): void {
-    this.stateService.currentPage$.subscribe(value => {
-      this.currentPage = value;
-    })
-  }
+
 
   loadComponent(option: string) {
-    if (option === 'Weather') {
-      this.currentComponent = WeatherComponent;
-    } else if (option === 'MyStore') {
-      this.currentComponent = MyStoreComponent;
+    if (option === PagesModel.WEATHER) {
+      this.signalService.updateCurrentPage$(PagesModel.WEATHER);
+    } else if (option === PagesModel.MyStore) {
+      this.signalService.updateCurrentPage$(PagesModel.MyStore);
     }
   }
 

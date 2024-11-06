@@ -1,0 +1,60 @@
+* check authentication
+
+* Handle API responses, loading states, and errors gracefully
+* reusable components like (header, footer, cards, forms)
+* Use more of Angular design
+* Session management using signals
+* user data, API responses, and UI states using signals
+
+/////////////////////////////////////////////////////////
+
+* In the Authentication we should have role management and session storage 
+* Make sure api calls are correct
+* UI, directives and pipes for the user interface ??
+* Should be responsive 
+* Testing: Write unit tests for components and services, focusing on edge cases and user flows
+* Documentation: Provide clear documentation on how to set up and run the project, along with code comments for clarity.
+
+/////////////////////////////////////////////////////////
+
+Testing, read documentation, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ToolbarBasic } from './toolbar.component';
+
+describe('MyComponent', () => {
+  let component: ToolbarBasic;
+  let fixture: ComponentFixture<ToolbarBasic>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [ ToolbarBasic ]
+    })
+    .compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ToolbarBasic);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
+

@@ -2,3 +2,13 @@
     width: 100vw;   
     height: 100vh;  
 }
+
+.error-stack {
+  position: fixed; 
+  bottom: var(--md-spacing-md);
+  left: var(--md-spacing-md);
+  display: flex;
+  flex-direction: column; 
+  gap: var(--md-spacing-sm); 
+  z-index: 1000; 
+}

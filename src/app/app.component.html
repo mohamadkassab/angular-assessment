@@ -1,4 +1,11 @@
 <main class="main">
   <app-loading *ngIf="isLoading"></app-loading>
-  <router-outlet />
+  <div class="error-stack">
+    <app-error 
+      *ngFor="let error of errorMessages" 
+      [errorMessage]="error" 
+      (dismiss)="dismissError(error)">
+    </app-error>
+  </div>
+  <router-outlet></router-outlet>
 </main>
