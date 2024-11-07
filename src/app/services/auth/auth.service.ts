@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { initializeApp } from 'firebase/app';
 import { SignalService } from '../signal/signal.service';
-import { TOKEN_KEY } from '../../utils/constants';
 import { environment } from '../../../environments/environment.dev';
 import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { TIMEOUT_DURATION } from '../../utils/constants';
 import { StatusModel } from '../../models/status.model';
 import { SessionManagementService } from '../session/session-management.service';
 
@@ -27,7 +25,7 @@ export class AuthService {
     return new Promise((_, reject) => {
       setTimeout(() => {
         reject(new Error('Operation timed out'));
-      }, TIMEOUT_DURATION);
+      }, environment.TIMEOUT_DURATION);
     });
   }
 
@@ -38,7 +36,6 @@ export class AuthService {
       await Promise.race([signInPromise, this.createTimeoutPromise()]);
       const userCredential = await signInPromise;
       const user = userCredential.user;
-      console.log(userCredential)
       if (user.email) {
         const token = await user.getIdToken();
         this.sessionManagementService.setSession(token);

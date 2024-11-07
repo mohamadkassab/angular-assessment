@@ -1,5 +1,7 @@
 export const environment = {
     production: false,
+    TOKEN_KEY: 'angular-assessment-token',
+    TIMEOUT_DURATION: 20000,
     config:{
         port: 4000
     },

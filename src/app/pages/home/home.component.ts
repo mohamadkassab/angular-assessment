@@ -1,8 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { Router } from '@angular/router';
-import { TOKEN_KEY } from '../../utils/constants';
-import { jwtDecode } from 'jwt-decode';
-import { isPlatformBrowser } from '@angular/common';
+import { Component} from '@angular/core';
 import { ToolbarBasic } from '../../components/toolbar/toolbar.component';
 
 @Component({

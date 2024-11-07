@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { finalize, timeout } from 'rxjs';
 import { ProductModel } from '../../models/product.model';
-import { TIMEOUT_DURATION, TOKEN_KEY } from '../../utils/constants';
 import { environment } from '../../../environments/environment.dev';
 import { SignalService } from '../signal/signal.service';
 import { StatusModel } from '../../models/status.model';
@@ -17,7 +16,7 @@ export class MyStoreService {
 
   getProducts(): void {
     this.signalService.updateStatus$(StatusModel.LOADING); 
-    const token = sessionStorage.getItem(TOKEN_KEY);
+    const token = sessionStorage.getItem(environment.TOKEN_KEY);
     const options = {
       headers:{
         'Authorization': `Bearer ${token}`,
@@ -25,7 +24,7 @@ export class MyStoreService {
     }
 
     this.http.get<ProductModel[]>(this.baseUrl, options).pipe(
-      timeout(TIMEOUT_DURATION),
+      timeout(environment.TIMEOUT_DURATION),
 
       finalize(() => {
         this.signalService.updateStatus$(StatusModel.IDLE); 

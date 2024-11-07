@@ -1,6 +1,6 @@
 // session-management.service.ts
 import { Injectable } from '@angular/core';
-import { TOKEN_KEY } from '../../utils/constants';
+import { environment } from '../../../environments/environment.dev';
 import { SignalService } from '../signal/signal.service';
 
 @Injectable({
@@ -12,19 +12,19 @@ export class SessionManagementService {
   ) { }
 
   setSession(sessionData: any): void {
-    sessionStorage.setItem(TOKEN_KEY, JSON.stringify(sessionData));
+    sessionStorage.setItem(environment.TOKEN_KEY, JSON.stringify(sessionData));
     this.signalService.updateEmail$(sessionData?.email);
     this.signalService.updateRole$("Admin");
     this.signalService.updateIsAuthenticated$(true);
   }
 
   getSession(): any | null {
-    const session = sessionStorage.getItem(TOKEN_KEY);
+    const session = sessionStorage.getItem(environment.TOKEN_KEY);
     return session ? JSON.parse(session) : null;
   }
 
   endSession(): void {
-    sessionStorage.removeItem(TOKEN_KEY);
+    sessionStorage.removeItem(environment.TOKEN_KEY);
     this.signalService.updateIsAuthenticated$(false);
     this.signalService.updateEmail$(null);
   }

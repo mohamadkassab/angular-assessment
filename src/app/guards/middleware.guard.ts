@@ -1,9 +1,9 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { TOKEN_KEY } from '../utils/constants';
 import { jwtDecode } from 'jwt-decode';
 import { isPlatformBrowser } from '@angular/common';
 import { Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment.dev';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +29,7 @@ export class MiddlewareGuard implements CanActivate {
 
   private checkAuthentication(observer: any) {
     if (isPlatformBrowser(this.platformId)) {
-      const token = sessionStorage.getItem(TOKEN_KEY);
+      const token = sessionStorage.getItem(environment.TOKEN_KEY);
       if (token) {
         try {
           const decoded: any = jwtDecode(token);
@@ -57,7 +57,7 @@ export class MiddlewareGuard implements CanActivate {
 
   private checkLoginRedirect(currentPath: string, observer: any) {
     if (currentPath === "/login" && isPlatformBrowser(this.platformId)) {
-      const token = sessionStorage.getItem(TOKEN_KEY);
+      const token = sessionStorage.getItem(environment.TOKEN_KEY);
       if (token) {
         try {
           const decoded: any = jwtDecode(token);

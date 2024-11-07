@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, catchError, map, timeout } from 'rxjs';
-import { TIMEOUT_DURATION, TOKEN_KEY } from '../../utils/constants';
 import { environment } from '../../../environments/environment.dev';
 import { SignalService } from '../signal/signal.service';
 import { StatusModel } from '../../models/status.model';
@@ -16,7 +15,7 @@ export class WeatherService {
   constructor(private http: HttpClient, private signalService: SignalService) { }
 
   getWeather(lat: number, lon: number): Observable<any> {
-    const token = sessionStorage.getItem(TOKEN_KEY);
+    const token = sessionStorage.getItem(environment.TOKEN_KEY);
     const options = {
       headers:{
         'Authorization': `Bearer ${token}`,
@@ -30,7 +29,7 @@ export class WeatherService {
 
     
     return this.http.get(this.baseUrl, options).pipe(
-      timeout(TIMEOUT_DURATION), 
+      timeout(environment.TIMEOUT_DURATION), 
       catchError(e => {
         console.error('Error fetching weather data', e);
         return of(null); 
