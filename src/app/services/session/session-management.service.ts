@@ -14,6 +14,7 @@ export class SessionManagementService {
   setSession(sessionData: any): void {
     sessionStorage.setItem(TOKEN_KEY, JSON.stringify(sessionData));
     this.signalService.updateEmail$(sessionData?.email);
+    this.signalService.updateRole$("Admin");
     this.signalService.updateIsAuthenticated$(true);
   }
 

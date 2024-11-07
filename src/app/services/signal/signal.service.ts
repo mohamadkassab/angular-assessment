@@ -41,6 +41,11 @@ export class SignalService {
     this._email.set(value);
   }
 
+  public _role: WritableSignal<string | null> = signal(null);
+  updateRole$(value: string | null) {
+    this._role.set(value);
+  }
+
   public _isAuthenticated: WritableSignal<boolean> = signal(false);
   updateIsAuthenticated$(value: boolean) {
     this._isAuthenticated.set(value);

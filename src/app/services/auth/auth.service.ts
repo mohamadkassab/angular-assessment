@@ -38,7 +38,7 @@ export class AuthService {
       await Promise.race([signInPromise, this.createTimeoutPromise()]);
       const userCredential = await signInPromise;
       const user = userCredential.user;
-
+      console.log(userCredential)
       if (user.email) {
         const token = await user.getIdToken();
         this.sessionManagementService.setSession(token);
